@@ -6,13 +6,13 @@ body{
 	align-items: center;
 	min-height: 100vh;
 	font-family: 'Jost', sans-serif;
-	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+	background: url(../img/icons-gray-bg.svg);
 }
 .main{
+    background: #425F57;
 	width: 1080px;
 	height: 640px;
 	overflow: hidden;
-	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
 	border-radius: 10px;
 	box-shadow: 5px 20px 50px #000;
 }
@@ -21,7 +21,7 @@ body{
 }
 .signup{
 	position: relative;
-	width:100%;
+	width: 100%;
 	height: 100%;
 }
 label{
@@ -45,16 +45,26 @@ input{
 	border: none;
 	outline: none;
 	border-radius: 5px;
+    font-size: 1.1rem;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 button{
+    font-size: 1.3rem;
 	width: 62%;
 	height: 40px;
 	margin: 10px auto;
 	justify-content: center;
 	display: block;
 	color: #fff;
-	background: #5fcf80;
-	font-size: 1em;
+	background: #749F82;
 	font-weight: bold;
 	margin-top: 20px;
 	outline: none;
@@ -64,17 +74,18 @@ button{
 	cursor: pointer;
 }
 button:hover{
-	background: #429059;
+	background: #516f5b;
 }
 .login{
 	height: 528px;
 	background: #eee;
 	border-radius: 60% / 10%;
-	transform: translateY(-180px);
+	transform: translateY(-200px);
 	transition: .8s ease-in-out;
 }
 .login label{
-	color: #573b8a;
+    font-size: 2.5rem;
+	color: #425F57;
 	transform: scale(.6);
 }
 

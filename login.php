@@ -15,7 +15,7 @@
     <div class="main">  	
 		<input type="checkbox" id="chk" aria-hidden="true">
 			<div class="signup">
-				<form name="signupfor" action="connector/signup.php" method="post">
+				<form name="signupfor" action="connector/signup" method="post">
 					<label for="chk" aria-hidden="true">Sign up</label>
                     <div class="flex-container">
                         <div class="flex-item-left">
@@ -43,7 +43,7 @@
 			</div>
 
 			<div class="login">
-				<form name="logform" action="connector/login.php" method="post">
+				<form name="logform" action="connector/signin" method="post">
 					<label for="chk" aria-hidden="true">Login</label>
                     <i class="fa fa-user-circle-o" style="font-size: 100px; justify-content: center; display: flex; color: #425F57;"></i>
                     <input type="text" name="username" placeholder="Username" required="">

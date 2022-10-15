@@ -2,8 +2,8 @@
     include "../../connector/connector.php";
 
     session_start();
-    if(isset($_SESSION['username']) != NULL){
-        header("location: ../admin");
+    if(isset($_SESSION['loginas']) === "admin"){
+        header("location: ../../admin");
         exit();
     }
 
@@ -20,7 +20,7 @@
             }
             $_SESSION['username'] = $username;
             $_SESSION['status'] = 'login';
-
+            $_SESSION['loginas'] = 'admin';
 
             $query2 = ("SELECT * from schooladmin where idkey='". $_SESSION['idkey'] . "'"); // get detail admin user
             $result2 = $conn->query($query2);

@@ -1,3 +1,12 @@
+<?php 
+    session_start();
+    if(isset($_SESSION['loginas']) === "volunteer"){
+        header("location: volunteer");
+        exit();
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="assets/js/customlog.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="main">  	
@@ -46,10 +56,10 @@
 				<form name="logform" action="connector/signin" method="post">
 					<label for="chk" aria-hidden="true">Login</label>
                     <i class="fa fa-user-circle-o" style="font-size: 100px; justify-content: center; display: flex; color: #425F57;"></i>
-                    <input type="text" name="username" placeholder="Username" required="">
-					<input type="password" name="password" placeholder="Password" required="">
-					<button onclick="return validateForm()">Login</button>
+                    <input type="text" name="usernamelog" placeholder="Username" required="">
+					<input type="password" name="passwordlog" placeholder="Password" required="">					
 				</form>
+                <button onclick="return validateForm()" id="logvolu">Login</button>
 			</div>
 	</div>
     <script>
@@ -77,8 +87,8 @@
 
         function validateForm() {
         const data = [];
-        data[0] = document.forms["logform"]["username"];
-        data[1] = document.forms["logform"]["password"];
+        data[0] = document.forms["logform"]["usernamelog"];
+        data[1] = document.forms["logform"]["passwordlog"];
         for (let indexdata = 0; indexdata < data.length; indexdata++) {
             if (data[indexdata].value == "") {
                 Swal.fire({
@@ -90,6 +100,44 @@
             }  
         }
         }
+
+        $(document).ready(function(){ // login user volunteer with ajax
+            $("#logvolu").click(function(){
+                var username = $('input[name="usernamelog"]').val().trim();
+                var password = $('input[name="passwordlog"]').val().trim();
+                
+                if( username != "" && password != "" ){
+                    $.ajax({
+                        url:'volunteer/convolunteer/logvolunteer.php',
+                        type:'post',
+                        data:{username:username,password:password},
+                        success:function(response){
+                            var msg = "";
+                            if(response == 1){
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Good job!',
+                                    text: 'Login Successfull' ,
+                                    confirmButtonText: 'OK',
+                                }).then((result) => {
+                                    /* Read more about isConfirmed, isDenied below */
+                                    if (result.isConfirmed) {
+                                        window.location = "volunteer";
+                                    }
+                                })
+                            } else {
+                                msg = "Invalid username and password!";
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: msg
+                                })
+                            }
+                        }
+                    });
+                }
+            });
+        });
     </script>
        
 </body>

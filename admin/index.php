@@ -3,6 +3,12 @@ session_start();
 
 if(($_SESSION["username"]) === NULL){
     header("location: login");
+    exit();
+} else{
+    if($_SESSION['loginas'] != 'admin'){
+        header("location: login");
+        exit();
+    }
 }
 
 ?>
@@ -22,7 +28,7 @@ if(($_SESSION["username"]) === NULL){
     <?php echo $_SESSION['staffid']?>
     <?php echo $_SESSION['position'] ?>
     <?php echo $_SESSION['schoolidkey'] ?>
-    <a href="logout">Logout</a>
+    <a href="conadmin/logout">Logout</a>
 
     <script>
 

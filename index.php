@@ -29,6 +29,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin">Admin</a>
+                    </li>
                 </ul>
                 <a href="login" class="btn fw-bold">Get in Touch</a>
             </div>

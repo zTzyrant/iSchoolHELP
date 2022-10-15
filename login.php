@@ -16,7 +16,7 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 			<div class="signup">
 				<form name="signupfor" action="connector/signup" method="post">
-					<label for="chk" aria-hidden="true">Sign up</label>
+					<label for="chk" aria-hidden="true">Sign up as Volunteer</label>
                     <div class="flex-container">
                         <div class="flex-item-left">
                             <input type="text" name="username" placeholder="username" required="">

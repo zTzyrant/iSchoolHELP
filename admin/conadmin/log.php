@@ -16,6 +16,9 @@
         if ($result -> num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $_SESSION['idkey'] = $row["id"];
+                $_SESSION['fullname'] = $row["fullname"];
+                $_SESSION['email'] = $row["email"];
+                $_SESSION['phone'] = $row["phone"];
         
             }
             $_SESSION['username'] = $username;

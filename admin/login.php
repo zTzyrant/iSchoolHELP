@@ -19,7 +19,6 @@
             <form name="admlogform" method="POST" id="admlogform">
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="password" name="password" placeholder="Password" required>
-                
             </form>
             <button onclick="return validateForm()" id="but_submit">Log in</button>
             <small>© 2022 Heroku</small>

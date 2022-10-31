@@ -1,16 +1,12 @@
 function offsidebar() {
     var sidebar = document.getElementById("sidebar");
     sidebar.classList.remove("active");
-    console.log("sss");
 }
 
 function onsidebar() {
     var sidebar = document.getElementById("sidebar");
     sidebar.classList.add("active");
-    console.log("sss");
 }
-
-
 
 
 function myFunction(x) {

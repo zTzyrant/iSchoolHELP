@@ -48,18 +48,18 @@
                         </div>
                     </div>
                     <input type="date" name="dob" placeholder="Date of birth" required="">
-					<button onclick="return validateSignUpForm()">Sign up</button>
+					<button class="tesbutton" onclick="return validateSignUpForm()">Sign up</button>
 				</form>
 			</div>
 
 			<div class="login">
-				<form name="logform" action="connector/signin" method="post">
+				<form name="logform" action="connector/signin" method="post" onsubmit="return false">
 					<label for="chk" aria-hidden="true">Login</label>
                     <i class="fa fa-user-circle-o" style="font-size: 100px; justify-content: center; display: flex; color: #425F57;"></i>
                     <input type="text" name="usernamelog" placeholder="Username" required="">
-					<input type="password" name="passwordlog" placeholder="Password" required="">					
+					<input type="password" name="passwordlog" placeholder="Password" required="">	
+                    <button class="tesbutton" onclick="return validateForm()" id="logvolu">Login</button>
 				</form>
-                <button onclick="return validateForm()" id="logvolu">Login</button>
 			</div>
 	</div>
     <script>

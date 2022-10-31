@@ -56,7 +56,7 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-button{
+.tesbutton{
     font-size: 1.3rem;
 	width: 62%;
 	height: 40px;
@@ -73,7 +73,7 @@ button{
 	transition: .2s ease-in;
 	cursor: pointer;
 }
-button:hover{
+.tesbutton:hover{
 	background: #516f5b;
 }
 .login{
@@ -141,7 +141,7 @@ button:hover{
     input{
         width: 19rem;
     }
-    button{
+    .tesbutton{
         width: 20rem;
     }
     #chk:checked ~ .login{

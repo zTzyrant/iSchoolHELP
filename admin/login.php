@@ -15,37 +15,33 @@
     <div class="main">  	
         <div class="content">
             <h3>Log in to your account</h3>
-            
-            <form name="admlogform" method="POST" id="admlogform">
+            <form name="admlogform" method="POST" onsubmit="return false" id="admlogform">
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="password" name="password" placeholder="Password" required>
+                <button id="but_submit">Log in</button>
             </form>
-            <button onclick="return validateForm()" id="but_submit">Log in</button>
             <small>© 2022 Heroku</small>
         </div>
     </div>
-    <script>       
-        function validateForm() {
-        const data = [];
-        data[0] = document.forms["admlogform"]["username"];
-        data[1] = document.forms["admlogform"]["password"];
-        for (let indexdata = 0; indexdata < data.length; indexdata++) {
-            if (data[indexdata].value == "") {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: data[indexdata].placeholder +' must be filled out!'
-                })
-                return false;
-            }  
-        }
-        }
+    <script>
 
         $(document).ready(function(){
             $("#but_submit").click(function(){
                 var username = $('input[name="username"]').val().trim();
                 var password = $('input[name="password"]').val().trim();
-
+                const data = [];
+                data[0] = document.forms["admlogform"]["username"];
+                data[1] = document.forms["admlogform"]["password"];
+                for (let indexdata = 0; indexdata < data.length; indexdata++) {
+                    if (data[indexdata].value == "") {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: data[indexdata].placeholder +' must be filled out!'
+                        })
+                        return false;
+                    }
+                }
                 if( username != "" && password != "" ){
                     $.ajax({
                         url:'conadmin/log.php',
@@ -78,6 +74,7 @@
                 }
             });
         });
+
     </script>
 </body>
 </html>

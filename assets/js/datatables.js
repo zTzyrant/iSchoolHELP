@@ -3,6 +3,11 @@ $('#schooltbl').dataTable( {
    scrollX: true,
 } );
 
+$('#reqtbl').dataTable( {
+  scrollY: 200,
+   scrollX: true,
+} );
+
 $(document).ready(function () {
     $('#table1').DataTable({
       "scrollX": true

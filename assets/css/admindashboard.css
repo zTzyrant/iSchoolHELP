@@ -1,4 +1,6 @@
-
+a.disabled {
+  pointer-events: none;
+}
 
 .pointeri{
   cursor: pointer;
@@ -88,5 +90,11 @@
   @media (-ms-high-contrast: none), screen and (-ms-high-contrast: active) {
     .ps {
       overflow: auto !important;
+    }
+  }
+
+  @media (max-width: 1800px) {
+    .col-lg-6{
+      width: 100% !important;
     }
   }

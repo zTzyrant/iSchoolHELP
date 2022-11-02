@@ -35,7 +35,7 @@ $(document).ready(function(){
         }
 
         let sch = document.getElementById('inputGroupSelect01').options; 
-        console.log(sch.length);
+
         for (let x = 0; x < sch.length; x++) {
             if (data[0].val().toLowerCase() === sch[x].value.toLowerCase()){
                 Swal.fire({
@@ -54,7 +54,7 @@ $(document).ready(function(){
     });
 
     $("#form2").submit(function(){
-        console.log("masuk");
+
         let valid = "true";
         let data = [];
         data[0] = $('input[name="col-uname"]');
@@ -120,7 +120,8 @@ function registschool(){
             if(response == 1){
                 Swal.fire({
                     icon: 'success',
-                    title: 'Success adding new school, Do you want to register school administrator too?',
+                    title: 'Success adding new school!',
+                    text: 'Do you want to register school administrator too?',
                     showDenyButton: true,
                     confirmButtonText: 'Yes',
                     denyButtonText: `No`,
@@ -128,6 +129,7 @@ function registschool(){
                     if (result.isConfirmed) {
                         $('#form1').hide();
                         $('#form2').show();
+                        $("#selectformtype").val("2"); 
                     }
                     })
             } else {

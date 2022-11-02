@@ -1,10 +1,19 @@
 $('#schooltbl').dataTable( {
-  scrollY: 200,
+  scrollY: 270,
    scrollX: true,
 } );
 
+$('#schooltblionreg').dataTable( {
+   scrollX: true,
+} );
+
+$('#tabletutorialrequest').dataTable( {
+  scrollX: true,
+} );
+
+
 $('#reqtbl').dataTable( {
-  scrollY: 200,
+  scrollY: 270,
    scrollX: true,
 } );
 

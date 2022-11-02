@@ -2,11 +2,11 @@
 session_start();
 
 if(($_SESSION["username"]) === NULL){
-    header("location: login");
+    header("location: ../login");
     exit();
 } else{
     if($_SESSION['loginas'] != 'admin'){
-        header("location: login");
+        header("location: ../login");
         exit();
     } else{
         include "../../connector/connector.php";
@@ -100,7 +100,7 @@ if(($_SESSION["username"]) === NULL){
                         </li>
 
                         <li class="sidebar-item ">
-                            <a onclick="signoutadm()" href="#" class='sidebar-link'>
+                            <a onclick="insignoutadm()" href="#" class='sidebar-link'>
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
@@ -135,7 +135,6 @@ if(($_SESSION["username"]) === NULL){
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="selectformtype">Register for</label>
                             <select class="form-select" id="selectformtype">
-                                <option selected hidden>Select Register for</option>
                                 <option value="1">School</option>
                                 <option value="2">School Administrator</option>
                             </select>
@@ -296,7 +295,7 @@ if(($_SESSION["username"]) === NULL){
                                 <h4>School List</h4>
                             </div>
                             <div class="card-body">
-                                <table id="schooltbl" class="table overflow-auto" style="width: 100%;">
+                                <table id="schooltblionreg" class="table overflow-auto" style="width: 100%;">
                                     <thead>
                                         <tr>
                                             <th>School Name</th>

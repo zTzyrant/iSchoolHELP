@@ -13,7 +13,8 @@
 
         $query = ("SELECT * from user where username='$username' and password='$password'"); // get user
         $result = mysqli_query($conn, $query);
-        if ($result -> num_rows > 0) {
+
+        if ($result -> num_rows > 0) { // it's for check num of rows
             while($row = $result->fetch_assoc()) {
                 $_SESSION['idkey'] = $row["id"];
                 $_SESSION['fullname'] = $row["fullname"];

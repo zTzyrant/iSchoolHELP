@@ -112,203 +112,204 @@ if(($_SESSION["username"]) === NULL){
     </div>
     <!-- Side bar -->
 
-    <div id="main">
-    
-        <header class="mb-3 pointeri">
-            <a onclick="onsidebar()" class="burger-btn d-block d-xl-none">
-                <i class="bi bi-list"></i>
-            </a>
-        </header>
+        <div id="main">
+        
+            <header class="mb-3 pointeri">
+                <a onclick="onsidebar()" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-list"></i>
+                </a>
+            </header>
 
 
-    <div class="page-heading">
-        <h3>Dashboard <?php echo $_SESSION['position'] ?></h3>
-    </div>
+        <div class="page-heading">
+            <h3>Dashboard <?php echo $_SESSION['position'] ?></h3>
+        </div>
 
-    <!-- // Basic multiple Column Form section start -->
-    <section id="multiple-column-form">
-        <div class="row match-height">
-            <div class="col-12 col-lg-9">
-                <div class="card">
-
-                    <div class="card-content">
-                        <div class="card-body">
-                            
-
-                            <!-- Form School & School Administrator  -->
-                            <form class="form" id="form1" onsubmit="return false" method="POST">
-                                <h4 class="card-title">Submit Request</h4>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="desc" class="form-label">Description</label>
-                                            <input type="text" id="desc" class="form-control" placeholder="Description" name="desc" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="datetutor" class="form-label">Date Tutor</label>
-                                            <input type="date" id="datetutor" class="form-control" placeholder="Date Tutor" name="datetutor" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="timetutor" class="form-label">Time Tutor</label>
-                                            <input type="time" id="timetutor" class="form-control" placeholder="Time" title="example: 10:00 AM" name="timetutor" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="studentlevel" class="form-label">Student Level</label>
-                                            <input type="text" id="studentlevel" class="form-control" placeholder="Student Level" name="studentlevel" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="nos" class="form-label">Num of Student</label>
-                                            <input type="text" id="nos" class="form-control" placeholder="Num of Student" name="nos" required>
-                                        </div>
-                                    </div>
-
-                                       
-                                    
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group form-check form-switch">
-                                                <input id="additionalreq" class="form-check-input" type="checkbox" id="addresource">
-                                                <label class="form-check-label" for="addresource">Additional Resource Request</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 col-12" id="addrq1" style="display: none;">
-                                        <div class="form-group">
-                                            <label for="resourcetype" class="form-label">Resource Type</label>
-                                            <input type="text" id="resourcetype" class="form-control" placeholder="Resource Type" name="resourcetype" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12" id="addrq2" style="display: none;">
-                                        <div class="form-group">
-                                            <label for="numrequired" class="form-label">Number Required</label>
-                                            <input type="text" id="numrequired" class="form-control" placeholder="Number Required" name="numrequired" required>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1" id="form1_submit">Submit</button>
-                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1" id="form1_submit">Reset</button>
-                                    </div>
-                                </div>
-                                
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-                <!-- right profile -->
-                <div class="col-12 col-lg-3">
+        <!-- // Basic multiple Column Form section start -->
+        <section id="multiple-column-form">
+            <div class="row match-height">
+                <div class="col-12 col-lg-9">
                     <div class="card">
-                        <div class="card-header">
-                            <h4>User Profile</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar avatar-xl">
-                                    <img src="../../assets/img/img_avatar.png" alt="face">
-                                </div>
-                                <div class="ms-3 name">
-                                    <h5 class="font-bold"><?php echo $_SESSION['fullname'] ?></h5>
-                                    <h6 class="text-muted mb-0"><?php echo $_SESSION['username'] ?></h6>
-                                </div>
+
+                        <div class="card-content">
+                            <div class="card-body">
+                                
+
+                                <!-- Form School & School Administrator  -->
+                                <form class="form" id="form1" onsubmit="return false" method="POST">
+                                    <h4 class="card-title">Submit Request</h4>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="desc" class="form-label">Description</label>
+                                                <input type="text" id="desc" class="form-control" placeholder="Description" name="desc" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="datetutor" class="form-label">Date Tutorial</label>
+                                                <input type="date" id="datetutor" class="form-control" placeholder="Date Tutor" name="datetutor" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="timetutor" class="form-label">Time Tutorial</label>
+                                                <input type="time" id="timetutor" class="form-control" placeholder="Time" title="example: 10:00 AM" name="timetutor" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="studentlevel" class="form-label">Student Level</label>
+                                                <input type="text" id="studentlevel" class="form-control" placeholder="Student Level" name="studentlevel" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="nos" class="form-label">Num of Student</label>
+                                                <input type="text" id="nos" class="form-control" placeholder="Num of Student" name="nos" required>
+                                            </div>
+                                        </div>
+
+                                        
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group form-check form-switch">
+                                                    <input id="additionalreq" class="form-check-input" type="checkbox" id="addresource">
+                                                    <label class="form-check-label" for="addresource">Additional Resource Request</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6 col-12" id="addrq1" style="display: none;">
+                                            <div class="form-group">
+                                                <label for="resourcetype" class="form-label">Resource Type</label>
+                                                <input type="text" id="resourcetype" class="form-control" placeholder="Resource Type" name="resourcetype" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12" id="addrq2" style="display: none;">
+                                            <div class="form-group">
+                                                <label for="numrequired" class="form-label">Number Required</label>
+                                                <input type="text" id="numrequired" class="form-control" placeholder="Number Required" name="numrequired" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1" id="form1_submit">Submit</button>
+                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1" id="form1_submit">Reset</button>
+                                        </div>
+                                    </div>
+                                    
+                                </form>
+
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="font-bold"><?php echo $_SESSION['schoolname'] ?></h5>
-                            <h6 class="text-muted mb-0"><?php echo $_SESSION['position'] ?></h6>
-                            <h6 class="text-muted mb-0"><?php echo $_SESSION['email'] ?></h6>
-                            <h6 class="text-muted mb-0"><?php echo $_SESSION['phone'] ?></h6>
-
-                        </div>
                     </div>
                 </div>
-                <!-- right profile -->
-        </div>
-    </section>
-    <!-- // Basic multiple Column Form section end -->
-
-    <!-- cONTENT -->
-    <div class="page-content">
-        <section class="row">
-            <div class="col-12 col-lg-9">
-                
-                <!-- Container Center -->
-                <div class="row">
-                    <div class="col-12">
+                    <!-- right profile -->
+                    <div class="col-12 col-lg-3">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Request List</h4>
+                                <h4>User Profile</h4>
                             </div>
                             <div class="card-body">
-                                <table id="tabletutorialrequest" class="table overflow-auto" style="width: 100%;">
-                                    <thead>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Request Date</th>
-                                            <th>Request Status</th>
-                                            <th>Description</th>
-
-                                            <th>Proposed Date</th>
-                                            <th>Proposed Time</th>
-                                            <th>Student Level</th>
-                                            <th>Num of Student</th>
-
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php 
-                                            include "../../connector/connector.php";
-                                            $query = ("SELECT * FROM request INNER JOIN tutorialrequest ON request.requestid = tutorialrequest.idreqkey;");
-                                            $result = mysqli_query($conn, $query);
-
-                                            if ($result -> num_rows > 0) {
-                                                while($row = $result->fetch_assoc()) {
-                                                    echo '<tr>';
-                                                    echo '<td>'.$row["requestid"].'</td>';
-                                                    echo '<td>'.$row["requestdate"].'</td>';
-                                                    echo '<td>'.$row["requeststatus"].'</td>';
-                                                    echo '<td>'.$row["description"].'</td>';
-                                                    echo '<td>'.$row["proposeddate"].'</td>';
-                                                    echo '<td>'.$row["proposetime"].'</td>';
-                                                    echo '<td>'.$row["studentlevel"].'</td>';
-                                                    echo '<td>'.$row["numstudent"].'</td>';
-                                                    echo '</tr>';
-                                                }
-                                            }
-                                        ?>
-                                        
-                                    </tbody>
-                                </table>
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar avatar-xl">
+                                        <img src="../../assets/img/img_avatar.png" alt="face">
+                                    </div>
+                                    <div class="ms-3 name">
+                                        <h5 class="font-bold"><?php echo $_SESSION['fullname'] ?></h5>
+                                        <h6 class="text-muted mb-0"><?php echo $_SESSION['username'] ?></h6>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-body">
-                                <button type="button" class="btn btn-outline-success float-end" onClick="window.location.reload();">Refresh Table</button>
+                                <h5 class="font-bold"><?php echo $_SESSION['schoolname'] ?></h5>
+                                <h6 class="text-muted mb-0"><?php echo $_SESSION['position'] ?></h6>
+                                <h6 class="text-muted mb-0"><?php echo $_SESSION['email'] ?></h6>
+                                <h6 class="text-muted mb-0"><?php echo $_SESSION['phone'] ?></h6>
+
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Container Center -->
-
+                    <!-- right profile -->
             </div>
         </section>
-    </div>
+        <!-- // Basic multiple Column Form section end -->
 
+        <!-- cONTENT -->
+        <div class="page-content">
+            <section class="row">
+                <div class="col-12 col-lg-9">
+                    
+                    <!-- Container Center -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Request List</h4>
+                                </div>
+                                <div class="card-body">
+                                    <table id="tabletutorialrequest" class="table overflow-auto" style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Request Date</th>
+                                                <th>Request Status</th>
+                                                <th>Description</th>
+
+                                                <th>Proposed Date</th>
+                                                <th>Proposed Time</th>
+                                                <th>Student Level</th>
+                                                <th>Num of Student</th>
+
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                                include "../../connector/connector.php";
+                                                $query = ("SELECT * FROM request INNER JOIN tutorialrequest ON request.requestid = tutorialrequest.idreqkey;");
+                                                $result = mysqli_query($conn, $query);
+
+                                                if ($result -> num_rows > 0) {
+                                                    while($row = $result->fetch_assoc()) {
+                                                        echo '<tr>';
+                                                        echo '<td>'.$row["requestid"].'</td>';
+                                                        echo '<td>'.$row["requestdate"].'</td>';
+                                                        echo '<td>'.$row["requeststatus"].'</td>';
+                                                        echo '<td>'.$row["description"].'</td>';
+                                                        echo '<td>'.$row["proposeddate"].'</td>';
+                                                        echo '<td>'.$row["proposetime"].'</td>';
+                                                        echo '<td>'.$row["studentlevel"].'</td>';
+                                                        echo '<td>'.$row["numstudent"].'</td>';
+                                                        echo '</tr>';
+                                                    }
+                                                }
+                                            ?>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-body">
+                                    <button type="button" class="btn btn-outline-success float-end" onClick="window.location.reload();">Refresh Table</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Container Center -->
+
+                </div>
+            </section>
+        </div>
+
+    </div>
     <script src="../../assets/js/jquery-3.6.1.js" type="text/javascript"></script>
     <!-- content -->    
     <script src="../../assets/js/bootstrap.js"></script>

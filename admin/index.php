@@ -123,190 +123,191 @@ if(($_SESSION["username"]) === NULL){
         </header>
 
 
-    <div class="page-heading">
-        <h3>Dashboard <?php echo $_SESSION['position'] ?></h3>
-    </div>
+        <div class="page-heading">
+            <h3>Dashboard <?php echo $_SESSION['position'] ?></h3>
+        </div>
 
-    <!-- cONTENT -->
-    <div class="page-content">
-        <section class="row">
-            <div class="col-12 col-lg-9">
+        <!-- cONTENT -->
+        <div class="page-content">
+            <section class="row">
+                <div class="col-12 col-lg-9">
 
-                <!-- TEST    -->
-                <div class="row">
-                    <div class="col-6 col-lg-6 col-md-6">
-                        <div class="card">
-                            <div class="card-body px-4 py-4-5">
-                                <div class="row">
-                                    <div class="card-header">
-                                        <h4>School List</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <table id="schooltbl" class="table overflow-auto" style="width: 100%;">
-                                            <thead>
-                                                <tr>
-                                                    <th>School Name</th>
-                                                    <th>City</th>
-                                                    <th>Address</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php 
-                                                    include "../connector/connector.php";
-                                                    $query = ("SELECT * FROM `school`");
-                                                    $result = mysqli_query($conn, $query);
+                    <!-- TEST    -->
+                    <div class="row">
+                        <div class="col-6 col-lg-6 col-md-6">
+                            <div class="card">
+                                <div class="card-body px-4 py-4-5">
+                                    <div class="row">
+                                        <div class="card-header">
+                                            <h4>School List</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <table id="schooltbl" class="table overflow-auto" style="width: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>School Name</th>
+                                                        <th>City</th>
+                                                        <th>Address</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php 
+                                                        include "../connector/connector.php";
+                                                        $query = ("SELECT * FROM `school`");
+                                                        $result = mysqli_query($conn, $query);
 
-                                                    if ($result -> num_rows > 0) {
-                                                        while($row = $result->fetch_assoc()) {
-                                                            echo '<tr>';
-                                                            echo '<td>'.$row["schoolname"].'</td>';
-                                                            echo '<td>'.$row["city"].'</td>';
-                                                            echo '<td>'.$row["address"].'</td>';
-                                                            echo '</tr>';
+                                                        if ($result -> num_rows > 0) {
+                                                            while($row = $result->fetch_assoc()) {
+                                                                echo '<tr>';
+                                                                echo '<td>'.$row["schoolname"].'</td>';
+                                                                echo '<td>'.$row["city"].'</td>';
+                                                                echo '<td>'.$row["address"].'</td>';
+                                                                echo '</tr>';
+                                                            }
                                                         }
-                                                    }
-                                                ?>
-                                                
-                                            </tbody>
-                                        </table>
+                                                    ?>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="card-body">
+                                            <button type="button" class="btn btn-outline-primary float-end">Register School</button>
+                                        </div>
                                     </div>
-                                    <div class="card-body">
-                                        <button type="button" class="btn btn-outline-primary float-end">Register School</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right row -->
+                        <div class="col-6 col-lg-6 col-md-6">
+                            <div class="card">
+                                <div class="card-body px-4 py-4-5">
+                                    <div class="row">
+                                        <div class="card-header">
+                                            <h4>Request List</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <table id="reqtbl" class="table overflow-auto" style="width: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>Date</th>
+                                                        <th>Status</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php 
+                                                        include "../connector/connector.php";
+                                                        $query = ("SELECT * FROM `request`");
+                                                        $result = mysqli_query($conn, $query);
+
+                                                        if ($result -> num_rows > 0) {
+                                                            while($row = $result->fetch_assoc()) {
+                                                                echo '<tr>';
+                                                                echo '<td>'.$row["requestid"].'</td>';
+                                                                echo '<td>'.$row["requestdate"].'</td>';
+                                                                echo '<td>'.$row["requeststatus"].'</td>';
+                                                                echo '<td>'.$row["description"].'</td>';
+                                                                echo '</tr>';
+                                                            }
+                                                        }
+                                                    ?>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="card-body">
+                                            <button type="button" class="btn btn-outline-primary float-end">Add Request</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Right row -->
-                    <div class="col-6 col-lg-6 col-md-6">
-                        <div class="card">
-                            <div class="card-body px-4 py-4-5">
-                                <div class="row">
-                                    <div class="card-header">
-                                        <h4>Request List</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <table id="reqtbl" class="table overflow-auto" style="width: 100%;">
-                                            <thead>
-                                                <tr>
-                                                    <th>Id</th>
-                                                    <th>Date</th>
-                                                    <th>Status</th>
-                                                    <th>Description</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php 
-                                                    include "../connector/connector.php";
-                                                    $query = ("SELECT * FROM `request`");
-                                                    $result = mysqli_query($conn, $query);
-
-                                                    if ($result -> num_rows > 0) {
-                                                        while($row = $result->fetch_assoc()) {
-                                                            echo '<tr>';
-                                                            echo '<td>'.$row["requestid"].'</td>';
-                                                            echo '<td>'.$row["requestdate"].'</td>';
-                                                            echo '<td>'.$row["requeststatus"].'</td>';
-                                                            echo '<td>'.$row["description"].'</td>';
-                                                            echo '</tr>';
-                                                        }
-                                                    }
-                                                ?>
-                                                
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="card-body">
-                                        <button type="button" class="btn btn-outline-primary float-end">Add Request</button>
-                                    </div>
+                    
+                    <!-- Container Center -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>ISchool Admin List</h4>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Container Center -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>ISchool Admin List</h4>
-                            </div>
-                            <div class="card-body">
-                                <table id="table1" class="table overflow-auto" style="width: 100%;">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Position</th>
-                                            <th>School Name</th>
-                                            <th>City</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php 
-                                            include "../connector/connector.php";
-                                            $query = ("SELECT * FROM school INNER JOIN schooladmin ON school.schoolid = schooladmin.schoolidkey INNER JOIN user ON schooladmin.idkey = user.id;");
-                                            $result = mysqli_query($conn, $query);
-                                            if ($result -> num_rows > 0) {
-                                                while($row = $result->fetch_assoc()) {
-                                                    echo '<tr>';
-                                                    echo '<td>'.$row["staffid"].'</td>';
-                                                    echo '<td>'.$row["fullname"].'</td>';
-                                                    echo '<td>'.$row["email"].'</td>';
-                                                    echo '<td>'.$row["position"].'</td>';
-                                                    echo '<td>'.$row["schoolname"].'</td>';
-                                                    echo '<td>'.$row["city"].'</td>';
-                                                    echo '</tr>';
+                                <div class="card-body">
+                                    <table id="table1" class="table overflow-auto" style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Position</th>
+                                                <th>School Name</th>
+                                                <th>City</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                                include "../connector/connector.php";
+                                                $query = ("SELECT * FROM school INNER JOIN schooladmin ON school.schoolid = schooladmin.schoolidkey INNER JOIN user ON schooladmin.idkey = user.id;");
+                                                $result = mysqli_query($conn, $query);
+                                                if ($result -> num_rows > 0) {
+                                                    while($row = $result->fetch_assoc()) {
+                                                        echo '<tr>';
+                                                        echo '<td>'.$row["staffid"].'</td>';
+                                                        echo '<td>'.$row["fullname"].'</td>';
+                                                        echo '<td>'.$row["email"].'</td>';
+                                                        echo '<td>'.$row["position"].'</td>';
+                                                        echo '<td>'.$row["schoolname"].'</td>';
+                                                        echo '<td>'.$row["city"].'</td>';
+                                                        echo '</tr>';
+                                                    }
                                                 }
-                                            }
-                                        ?>           
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="card-body">
-                                <button type="button" class="btn btn-outline-primary float-end">Add</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Container Center -->
-
-            </div>
-            <!-- right profile -->
-            <div class="col-12 col-lg-3">
-
-                <div class="card">
-                    <div class="card-header">
-                        <h4>User Profile</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="avatar avatar-xl">
-                                <img src="../assets/img/img_avatar.png" alt="face">
-                            </div>
-                            <div class="ms-3 name">
-                                <h5 class="font-bold"><?php echo $_SESSION['fullname'] ?></h5>
-                                <h6 class="text-muted mb-0"><?php echo $_SESSION['username'] ?></h6>
+                                            ?>           
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-body">
+                                    <button type="button" class="btn btn-outline-primary float-end">Add</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <h5 class="font-bold"><?php echo $_SESSION['schoolname'] ?></h5>
-                        <h6 class="text-muted mb-0"><?php echo $_SESSION['position'] ?></h6>
-                        <h6 class="text-muted mb-0"><?php echo $_SESSION['email'] ?></h6>
-                        <h6 class="text-muted mb-0"><?php echo $_SESSION['phone'] ?></h6>
+                    <!-- Container Center -->
 
-                    </div>
                 </div>
+                <!-- right profile -->
+                <div class="col-12 col-lg-3">
 
-            </div>
-            <!-- right profile -->
-        </section>
-    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>User Profile</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar avatar-xl">
+                                    <img src="../assets/img/img_avatar.png" alt="face">
+                                </div>
+                                <div class="ms-3 name">
+                                    <h5 class="font-bold"><?php echo $_SESSION['fullname'] ?></h5>
+                                    <h6 class="text-muted mb-0"><?php echo $_SESSION['username'] ?></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="font-bold"><?php echo $_SESSION['schoolname'] ?></h5>
+                            <h6 class="text-muted mb-0"><?php echo $_SESSION['position'] ?></h6>
+                            <h6 class="text-muted mb-0"><?php echo $_SESSION['email'] ?></h6>
+                            <h6 class="text-muted mb-0"><?php echo $_SESSION['phone'] ?></h6>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- right profile -->
+            </section>
+        </div>
     <!-- content -->
+    </div>
     <script src="../assets/js/bootstrap.js"></script>
     <script src="../assets/js/dashboard.js"></script>
 

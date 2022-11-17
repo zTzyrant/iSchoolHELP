@@ -35,6 +35,11 @@ if(($_SESSION["username"]) === NULL){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard <?php echo $_SESSION['username'] ?></title>
+
+    <!-- Favicons -->
+    <link href="../../assets/img/logois.png" rel="icon">
+    <link href="../../assets/img/apple-touch-iconis" rel="apple-touch-icon">
+
     <link rel="stylesheet" href="../../assets/css/admindashboard.css">
     <!-- Bootsrapt -->
     <link rel="stylesheet" href="../../assets/css/bootstrap52.css">

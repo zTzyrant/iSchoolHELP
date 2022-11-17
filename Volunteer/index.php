@@ -19,7 +19,11 @@ if(($_SESSION["username"]) === NULL){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard <?php $_SESSION['username'] ?></title>
+    <title>Dashboard</title>
+
+    <!-- Favicons -->
+    <link href="../assets/img/logois.png" rel="icon">
+    <link href="../assets/img/apple-touch-iconis" rel="apple-touch-icon">
 
     <link rel="stylesheet" href="../assets/css/admindashboard.css">
     <!-- Bootsrapt -->
@@ -88,97 +92,98 @@ if(($_SESSION["username"]) === NULL){
         </header>
 
 
-    <div class="page-heading">
-        <h3>Dashboard <?php echo $_SESSION['fullname'] ?></h3>
-    </div>
+        <div class="page-heading">
+            <h3>Dashboard <?php echo $_SESSION['fullname'] ?></h3>
+        </div>
 
-    <!-- cONTENT -->
-    <div class="page-content">
-        <section class="row">
-            <div class="col-12 col-lg-9">
-                <!-- Container Center -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>ISchool Admin List</h4>
-                            </div>
-                            <div class="card-body">
-                                <table id="table1" class="table overflow-auto" style="width: 100%;">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Position</th>
-                                            <th>School Name</th>
-                                            <th>City</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php 
-                                            include "../connector/connector.php";
-                                            $query = ("SELECT * FROM school INNER JOIN schooladmin ON school.schoolid = schooladmin.schoolidkey INNER JOIN user ON schooladmin.idkey = user.id;");
-                                            $result = mysqli_query($conn, $query);
-                                            if ($result -> num_rows > 0) {
-                                                while($row = $result->fetch_assoc()) {
-                                                    echo '<tr>';
-                                                    echo '<td>'.$row["staffid"].'</td>';
-                                                    echo '<td>'.$row["fullname"].'</td>';
-                                                    echo '<td>'.$row["email"].'</td>';
-                                                    echo '<td>'.$row["position"].'</td>';
-                                                    echo '<td>'.$row["schoolname"].'</td>';
-                                                    echo '<td>'.$row["city"].'</td>';
-                                                    echo '</tr>';
+        <!-- cONTENT -->
+        <div class="page-content">
+            <section class="row">
+                <div class="col-12 col-lg-9">
+                    <!-- Container Center -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>View Requests</h4>
+                                    <p>You can sort this table by school / by city / or by request date by click table header.</p>
+                                </div>
+                                <div class="card-body">
+                                    <table id="table1" class="table overflow-auto" style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>Request ID</th>
+                                                <th>School</th>
+                                                <th>City</th>
+                                                <th>Request Date</th>
+                                                <th>Status</th>
+                                                <th>Description</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                                include "../connector/connector.php";
+                                                $query = ("SELECT * FROM `school` INNER JOIN request ON schoolid= schoolidkey INNER JOIN tutorialrequest ON request.requestid = tutorialrequest.idreqkey;");
+                                                $result = mysqli_query($conn, $query);
+                                                if ($result -> num_rows > 0) {
+                                                    while($row = $result->fetch_assoc()) {
+                                                        if($row["requeststatus"] == "NEW"){
+                                                            echo '<tr>';
+                                                            echo '<td>'.$row["requestid"].'</td>';
+                                                            echo '<td>'.$row["schoolname"].'</td>';
+                                                            echo '<td>'.$row["city"].'</td>';
+                                                            echo '<td>'.$row["requestdate"].'</td>';
+                                                            echo '<td>'.$row["requeststatus"].'</td>';
+                                                            echo '<td>'.$row["description"].'</td>';
+                                                            echo '<td><button id="myInput" type="button" class="btn btn-outline-primary" onclick="window.location.href='."'requestdetails?viewid=". $row["requestid"] ."'".';">View Details</button></td>';
+                                                            echo '</tr>';
+                                                        }  
+                                                    }
                                                 }
-                                            }
-                                        ?>           
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="card-body">
-                                <button type="button" class="btn btn-outline-primary float-end">Add</button>
+                                            ?>           
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Container Center -->
+                    <!-- Container Center -->
 
-            </div>
-            <!-- right profile -->
-            <div class="col-12 col-lg-3">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>User Profile</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="avatar avatar-xl">
-                                <img src="../assets/img/img_avatar.png" alt="face">
-                            </div>
-                            <div class="ms-3 name">
-                                <h5 class="font-bold"><?php echo $_SESSION['fullname'] ?></h5>
-                                <h6 class="text-muted mb-0"><?php echo $_SESSION['username'] ?></h6>
+                </div>
+                <!-- right profile -->
+                <div class="col-12 col-lg-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>User Profile</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar avatar-xl">
+                                    <img src="../assets/img/img_avatar.png" alt="face">
+                                </div>
+                                <div class="ms-3 name">
+                                    <h5 class="font-bold"><?php echo $_SESSION['fullname'] ?></h5>
+                                    <h6 class="text-muted mb-0"><?php echo $_SESSION['username'] ?></h6>
+                                </div>
                             </div>
                         </div>
+                        <div class="card-body">
+                            <h5 class="font-bold"><?php echo $_SESSION['occupation'] ?></h5>
+                            <h6 class="text-muted mb-0"><?php echo $_SESSION['email'] ?></h6>
+                            <h6 class="text-muted mb-0"><?php echo $_SESSION['dateofbirth'] ?></h6>
+                            <h6 class="text-muted mb-0"><?php echo $_SESSION['phone'] ?></h6>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h5 class="font-bold"><?php echo $_SESSION['occupation'] ?></h5>
-                        <h6 class="text-muted mb-0"><?php echo $_SESSION['email'] ?></h6>
-                        <h6 class="text-muted mb-0"><?php echo $_SESSION['dateofbirth'] ?></h6>
-                        <h6 class="text-muted mb-0"><?php echo $_SESSION['phone'] ?></h6>
-                    </div>
+
                 </div>
-
-            </div>
-            <!-- right profile -->
-        </section>
-    </div>
-    <!-- content -->    
+                <!-- right profile -->
+            </section>
+        </div>
+        <!-- content -->    
     
     </div>
-    
-
+                    
     
     <script src="../assets/js/bootstrap.js"></script>
     <script src="../assets/js/dashboard.js"></script>
@@ -188,5 +193,10 @@ if(($_SESSION["username"]) === NULL){
     <script src="../assets/js/jquery-3.6.1.js" type="text/javascript"></script>
     <script src="../assets/js/datatables.min.js"></script>
     <script src="../assets/js/datatables.js"></script>
+    <script>
+        $('#viewrequestdetails').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        });
+    </script>
 </body>
 </html>

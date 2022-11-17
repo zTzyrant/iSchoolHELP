@@ -36,6 +36,11 @@ if(($_SESSION["username"]) === NULL){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard <?php echo $_SESSION['username'] ?></title>
     <link rel="stylesheet" href="../../assets/css/admindashboard.css">
+
+    <!-- Favicons -->
+    <link href="../../assets/img/logois.png" rel="icon">
+    <link href="../../assets/img/apple-touch-iconis" rel="apple-touch-icon">
+
     <!-- Bootsrapt -->
     <link rel="stylesheet" href="../../assets/css/bootstrap52.css">
     <link rel="stylesheet" href="../../assets/css/bootstrap-icons.css">

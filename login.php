@@ -13,7 +13,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login as Volunteer</title>
+    <title>Volunteer Login</title>
+
+    <!-- Favicons -->
+    <link href="assets/img/logois.png" rel="icon">
+    <link href="assets/img/apple-touch-iconis" rel="apple-touch-icon">
+
     <link rel="stylesheet" type="text/css" href="assets/css/loginreg.css">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,7 +31,7 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 			<div class="signup">
 				<form name="signupfor" action="connector/signup" method="post">
-					<label for="chk" aria-hidden="true">Sign up as Volunteer</label>
+					<label for="chk" aria-hidden="true" class="inlabel">Sign up as Volunteer</label>
                     <div class="flex-container">
                         <div class="flex-item-left">
                             <input type="text" name="username" placeholder="username" required="">
@@ -47,14 +52,14 @@
                             <input type="text" name="occupation" placeholder="Occupation" required="">
                         </div>
                     </div>
-                    <input type="date" name="dob" placeholder="Date of birth" required="">
+                    <input type="text" name="dob" placeholder="Date of Birth" title="Date of Birth" onfocus="(this.type='date')" required="">
 					<button class="tesbutton" onclick="return validateSignUpForm()">Sign up</button>
 				</form>
 			</div>
 
 			<div class="login">
 				<form name="logform" action="connector/signin" method="post" onsubmit="return false">
-					<label for="chk" aria-hidden="true">Login</label>
+					<label for="chk" aria-hidden="true" class="inlabel">Login</label>
                     <i class="fa fa-user-circle-o" style="font-size: 100px; justify-content: center; display: flex; color: #425F57;"></i>
                     <input type="text" name="usernamelog" placeholder="Username" required="">
 					<input type="password" name="passwordlog" placeholder="Password" required="">	

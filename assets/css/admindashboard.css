@@ -82,6 +82,10 @@ a.disabled {
     background-color: #999;
     width: 11px;
   }
+
+  .cstm::before{
+    font-size: 22px;
+  }
   @supports (-ms-overflow-style: none) {
     .ps {
       overflow: auto !important;

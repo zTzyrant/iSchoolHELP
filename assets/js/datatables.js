@@ -23,3 +23,9 @@ $(document).ready(function () {
     });
     $('.dataTables_length').addClass('bs-select');
 });
+
+$('#reviewioffers').DataTable({
+  scrollY: 270,
+   scrollX: true,
+   "order": [[ 0, 'asc' ], [ 1, 'asc' ]]
+});

@@ -44,7 +44,7 @@
                 <ul>
                 <li><a class="active" href="#">Home</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="contact">Contact</a></li>
                 <li><a href="admin">Admin</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -178,62 +178,61 @@
     
     <!-- ======= Footer ======= -->
     <footer id="footer">
+      <div class="footer-top">
+        <div class="container">
+            <div class="row">
 
-    <div class="footer-top">
-    <div class="container">
-        <div class="row">
+            <div class="col-lg-3 col-md-6 footer-contact">
+                <h3>ISchool Help</h3>
+                <p>
+                Jl. Raya Puputan No.86 <br>
+                Kota Denpasar, Bali 80234<br>
+                Indonesia <br><br>
+                <strong>Phone:</strong> +62 0821 3492 xxxx<br>
+                <strong>Email:</strong> mzeinakbar@aol.com<br>
+                </p>
+            </div>
 
-        <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>ISchool Help</h3>
-            <p>
-            Jl. Raya Puputan No.86 <br>
-            Kota Denpasar, Bali 80234<br>
-            Indonesia <br><br>
-            <strong>Phone:</strong> +62 0821 3492 xxxx<br>
-            <strong>Email:</strong> mzeinakbar@aol.com<br>
-            </p>
+            <div class="col-lg-2 col-md-6 footer-links">
+                <h4>Useful Links</h4>
+                <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="admin">Admin</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="volunteer">Volunteer</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+
+            </div>
+
+            <div class="col-lg-4 col-md-6 footer-newsletter">
+                <h4>Join Our Newsletter</h4>
+                <p>Get the latest news from us. by adding an email into the input below.</p>
+                <form action="" method="post">
+                <input type="email" name="email"><input type="submit" value="Subscribe">
+                </form>
+            </div>
+
+            </div>
         </div>
+      </div>
 
-        <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="admin">Admin</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="volunteer">Volunteer</a></li>
-            </ul>
-        </div>
+      <div class="container d-md-flex py-4">
 
-        <div class="col-lg-3 col-md-6 footer-links">
-
-        </div>
-
-        <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Join Our Newsletter</h4>
-            <p>Get the latest news from us. by adding an email into the input below.</p>
-            <form action="" method="post">
-            <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-        </div>
-
-        </div>
-    </div>
-    </div>
-
-    <div class="container d-md-flex py-4">
-
-    <div class="me-md-auto text-center text-md-start">
-        <div class="copyright">
-        &copy; Copyright <strong><span>Mentor</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-    </div>
-    <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="https://www.instagram.com/me.zein_/" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/ztzyrant/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-    </div>
-    </div>
+      <div class="me-md-auto text-center text-md-start">
+          <div class="copyright">
+          &copy; Copyright <strong><span>Mentor</span></strong>. All Rights Reserved
+          </div>
+          <div class="credits">
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+          <a href="https://www.instagram.com/me.zein_/" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/ztzyrant/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+      </div>
     </footer><!-- End Footer -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

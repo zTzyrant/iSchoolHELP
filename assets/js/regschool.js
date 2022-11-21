@@ -64,6 +64,7 @@ $(document).ready(function(){
         data[4] = $('input[name="col-phone"]');
         data[5] = $('input[name="col-pos"]');
         data[6] = $('#inputGroupSelect01');
+        data[7] = $('input[name="col-staffid"]');
 
 
         for (let indexdata = 0; indexdata < data.length; indexdata++) {
@@ -75,7 +76,7 @@ $(document).ready(function(){
                 })
                 valid = "false";
             }
-            if(data[6] === "0"){
+            else if(data[6].val() === "-1"){
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
@@ -85,7 +86,19 @@ $(document).ready(function(){
             }
         }
 
-        
+        let admid = document.getElementById('idcollection').options; 
+
+        for (let x = 0; x < admid.length; x++) {
+            if (data[7].val() === admid[x].value){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Staff Id Already used!'
+                })
+                valid = "false";
+            }
+            
+        }
 
         if(valid === "true"){
             registadminschool();
@@ -158,10 +171,11 @@ function registadminschool(){
     data[4] = $('input[name="col-phone"]').val().trim();
     data[5] = $('input[name="col-pos"]').val().trim();
     data[6] = $('#inputGroupSelect01').val();
+    data[7] = $('input[name="col-staffid"]').val();
     $.ajax({
         url:'../conadmin/registadminschool.php',
         type:'post',
-        data:{username:data[0], password:data[1], fullname:data[2], 
+        data:{username:data[0], password:data[1], fullname:data[2], staffid:data[7], 
             email:data[3], phone:data[4], pos:data[5], school:data[6]},
         success:function(response){
             

@@ -15,8 +15,9 @@
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $pos = $_POST['pos'];
+    $staffid = $_POST['staffid'];
 
-    $schoolname = $_POST['school'];
+    $schoolid = $_POST['school'];
 
 
     $sql = "INSERT INTO user (id, username, password, fullname, email, phone)
@@ -24,16 +25,9 @@
     if ($conn->query($sql) === TRUE) {
         $last_id = $conn->insert_id;
 
-        // get id from school name
-        $schoolidget = "SELECT * FROM `school` WHERE schoolname = '$schoolname'"; 
-        $schoolkeyresult = $conn->query($schoolidget);
-        $idschoolrow = $schoolkeyresult -> fetch_assoc();
-        $idschool = $idschoolrow['schoolid'];
-        // end get id from school name code by Muhammad Zein Akbar
-
         $pushadmn = "INSERT INTO schooladmin (idkey, staffid, position, schoolidkey) 
 
-        VALUES ('$last_id', '', '$pos', '$idschool')";
+        VALUES ('$last_id', '$staffid', '$pos', '$schoolid')";
 
         if ($conn->query($pushadmn) === TRUE) {
             $successg = TRUE;

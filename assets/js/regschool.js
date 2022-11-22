@@ -97,7 +97,6 @@ $(document).ready(function(){
                 })
                 valid = "false";
             }
-            
         }
 
         if(valid === "true"){
@@ -120,17 +119,15 @@ function registschool(){
             
             let msg = "";
             // UPDATE TABLE AFTER REGIST
-            let t = $('#schooltbl').DataTable();
-
-                t.row.add([schoolname, address, city]).draw(false);
-         
-
-            $('#inputGroupSelect01').append($('<option>', {
-                value: schoolname,
-                text: schoolname
-            }));
             $('#form1').trigger("reset");
             if(response == 1){
+                let t = $('#schooltbl').DataTable();
+                t.row.add([schoolname, address, city]).draw(false);
+                $('#inputGroupSelect01').append($('<option>', {
+                    value: schoolname,
+                    text: schoolname
+                }));
+
                 Swal.fire({
                     icon: 'success',
                     title: 'Success adding new school!',
@@ -183,6 +180,10 @@ function registadminschool(){
             // UPDATE TABLE AFTER REGIST
             $('#form1').trigger("reset");
             if(response == 1){
+                $('#idcollection').append($('<option>', {
+                    value: data[7],
+                    text: data[7]
+                }));
                 Swal.fire(
                     'Success!',
                     'Success adding new administrator to ' + data[6] + ' School',

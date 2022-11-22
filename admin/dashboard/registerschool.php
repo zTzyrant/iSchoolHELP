@@ -321,7 +321,7 @@ if(($_SESSION["username"]) === NULL){
                             </div>
 
                             <div class="card-footer">
-                                <button type="button" class="btn btn-outline-success">
+                                <button type="button" onclick="location='editprofile'" class="btn btn-outline-success">
                                     <i class="bi bi-person-fill cstm"></i>
                                     <span>Edit Profile</span>
                                 </button>

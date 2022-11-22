@@ -20,8 +20,8 @@
                 $_SESSION['fullname'] = $row["fullname"];
                 $_SESSION['email'] = $row["email"];
                 $_SESSION['phone'] = $row["phone"];
-        
             }
+            $_SESSION['password'] = $_POST['password'];
             $_SESSION['username'] = $username;
             $_SESSION['status'] = 'login';
             $_SESSION['loginas'] = 'admin';

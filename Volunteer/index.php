@@ -188,6 +188,12 @@ if(($_SESSION["username"]) === NULL){
                             <h6 class="text-muted mb-0"><?php echo $_SESSION['dateofbirth'] ?></h6>
                             <h6 class="text-muted mb-0"><?php echo $_SESSION['phone'] ?></h6>
                         </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-outline-success">
+                                <i class="bi bi-person-fill cstm"></i>
+                                <span>Edit Profile</span>
+                            </button>
+                        </div>
                     </div>
 
                 </div>

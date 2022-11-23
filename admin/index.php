@@ -314,6 +314,7 @@ if(($_SESSION["username"]) === NULL){
                         </div>
                         <div class="card-body">
                             <h5 class="font-bold"><?php echo $_SESSION['schoolname'] ?></h5>
+                            <h6 class="text-muted mb-0">School ID: <?php echo $_SESSION['schoolidkey'] ?></h6>
                             <h6 class="text-muted mb-0"><?php echo $_SESSION['position'] ?></h6>
                             <h6 class="text-muted mb-0"><?php echo $_SESSION['email'] ?></h6>
                             <h6 class="text-muted mb-0"><?php echo $_SESSION['phone'] ?></h6>                

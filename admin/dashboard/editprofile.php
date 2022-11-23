@@ -129,118 +129,147 @@ if(($_SESSION["username"]) === NULL){
             </header>
 
 
-        <div class="page-heading">
-            <h3>Dashboard <?php echo $_SESSION['position'] ?></h3>
-        </div>
+            <div class="page-heading">
+                <h3>Dashboard <?php echo $_SESSION['position'] ?></h3>
+            </div>
 
-        <!-- // Basic multiple Column Form section start -->
-        <section id="multiple-column-form">
-            <div class="row match-height">
-                <div class="col-12 col-lg-9">
-                    <div class="card">
+            <!-- // Basic multiple Column Form section start -->
+            <section id="multiple-column-form">
+                <div class="row match-height">
+                    <div class="col-12 col-lg-9">
+                        <div class="card">
 
-                        <div class="card-content">
-                            <div class="card-body">
-              
-                                <!-- Form School & School Administrator  -->
-                                <form class="form" id="form1" onsubmit="return false" method="POST">
-                                    <h4 class="card-title">Edit Profile</h4>
-                                    
-                                    <select class="form-select" id="idcollection" disabled hidden>
-                                        <?php 
-                                            include "../../connector/connector.php";
-                                            $query = ("SELECT * FROM `schooladmin`");
-                                            $result = mysqli_query($conn, $query);
-
-                                            if ($result -> num_rows > 0) {
-                                                while($row = $result->fetch_assoc()) {
-                                                    echo '<option value="'.$row["staffid"].'">'.$row["staffid"].'</option>';
-                                                }
-                                            }
-                                        ?>
-                                    </select>
-                                    <input type="text" name="oldstaff" value="<?php echo $_SESSION['staffid']?>" disabled hidden>
-
-
-                                    <div class="row">
-
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="schoolname" class="form-label">School Name</label>
-                                                <input type="text" id="schoolname" class="form-control" value="<?php echo $_SESSION['schoolname']?>" disabled readonly>
-                                            </div>
-                                        </div>
+                            <div class="card-content">
+                                <div class="card-body">
+                
+                                    <!-- Form School & School Administrator  -->
+                                    <form class="form" id="form1" onsubmit="return false" method="POST">
+                                        <h4 class="card-title">Edit Profile</h4>
                                         
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="username" class="form-label">Username</label>
-                                                <input type="text" id="username" class="form-control" value="<?php echo $_SESSION['username']?>" disabled readonly>
-                                            </div>
-                                        </div>
+                                        <select class="form-select" id="idcollection" disabled hidden>
+                                            <?php 
+                                                include "../../connector/connector.php";
+                                                $query = ("SELECT * FROM `schooladmin`");
+                                                $result = mysqli_query($conn, $query);
 
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="password" class="form-label">Password</label>
-                                                <div class="input-group">
-                                                    <input id="ps1x" type="password" class="form-control" placeholder="Password" value="<?php echo $_SESSION['password']?>" name="password" required>
-                                                    <span class="input-group-text" title="show password" onclick="showpass()"><i class="bi bi-eye-fill eyeinpt"></i></span>
+                                                if ($result -> num_rows > 0) {
+                                                    while($row = $result->fetch_assoc()) {
+                                                        echo '<option value="'.$row["staffid"].'">'.$row["staffid"].'</option>';
+                                                    }
+                                                }
+                                            ?>
+                                        </select>
+                                        <input type="text" name="oldstaff" value="<?php echo $_SESSION['staffid']?>" disabled hidden>
+
+
+                                        <div class="row">
+
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="schoolname" class="form-label">School Name</label>
+                                                    <input type="text" id="schoolname" class="form-control" value="<?php echo $_SESSION['schoolname']?>" disabled readonly>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="fullname" class="form-label">Fullname</label>
-                                                <input type="text" id="fullname" class="form-control" placeholder="Fullname" name="fullname" value="<?php echo $_SESSION['fullname']?>" required>
+                                            
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="username" class="form-label">Username</label>
+                                                    <input type="text" id="username" class="form-control" value="<?php echo $_SESSION['username']?>" disabled readonly>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="email" class="form-label">Email</label>
-                                                <input type="text" id="email" class="form-control" placeholder="Email" name="email" value="<?php echo $_SESSION['email']?>"  required>
+
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="password" class="form-label">Password</label>
+                                                    <div class="input-group">
+                                                        <input id="ps1x" type="password" class="form-control" placeholder="Password" value="<?php echo $_SESSION['password']?>" name="password" required>
+                                                        <span class="input-group-text" title="show password" onclick="showpass()"><i class="bi bi-eye-fill eyeinpt"></i></span>
+                                                    </div>
+                                                </div>
                                             </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="fullname" class="form-label">Fullname</label>
+                                                    <input type="text" id="fullname" class="form-control" placeholder="Fullname" name="fullname" value="<?php echo $_SESSION['fullname']?>" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="email" class="form-label">Email</label>
+                                                    <input type="text" id="email" class="form-control" placeholder="Email" name="email" value="<?php echo $_SESSION['email']?>"  required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="phone" class="form-label">Phone</label>
+                                                    <input type="number" id="phone" class="form-control" placeholder="Phone Number" name="phone" value="<?php echo $_SESSION['phone']?>" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="staffID" class="form-label">Staff ID</label>
+                                                    <input type="text" id="staffID" class="form-control" placeholder="Staff ID" name="staffID" value="<?php echo $_SESSION['staffid']?>" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="position" class="form-label">Position</label>
+                                                    <input type="text" id="position" class="form-control" placeholder="Position" name="position"  value="<?php echo $_SESSION['position']?>" required>
+                                                </div>
+                                            </div>
+                                            
                                         </div>
 
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="phone" class="form-label">Phone</label>
-                                                <input type="number" id="phone" class="form-control" placeholder="Phone Number" name="phone" value="<?php echo $_SESSION['phone']?>" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="staffID" class="form-label">Staff ID</label>
-                                                <input type="text" id="staffID" class="form-control" placeholder="Staff ID" name="staffID" value="<?php echo $_SESSION['staffid']?>" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label for="position" class="form-label">Position</label>
-                                                <input type="text" id="position" class="form-control" placeholder="Position" name="position"  value="<?php echo $_SESSION['position']?>" required>
+                                        <div class="row">
+                                            <div class="col-12 d-flex justify-content-end">
+                                                <button type="submit" class="btn btn-primary me-1 mb-1" id="form1_submit">Update Profile</button>
                                             </div>
                                         </div>
                                         
-                                    </div>
+                                    </form>
 
-                                    <div class="row">
-                                        <div class="col-12 d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary me-1 mb-1" id="form1_submit">Update Profile</button>
-                                        </div>
-                                    </div>
-                                    
-                                </form>
-
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <!-- right profile -->
+                    <div class="col-12 col-lg-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>User Profile</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar avatar-xl">
+                                        <img src="../../assets/img/img_avatar.png" alt="face">
+                                    </div>
+                                    <div class="ms-3 name">
+                                        <h5 class="font-bold"><?php echo $_SESSION['fullname'] ?></h5>
+                                        <h6 class="text-muted mb-0"><?php echo $_SESSION['username'] ?></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="font-bold"><?php echo $_SESSION['schoolname'] ?></h5>
+                                <h6 class="text-muted mb-0">School ID: <?php echo $_SESSION['schoolidkey'] ?></h6>
+                                <h6 class="text-muted mb-0"><?php echo $_SESSION['position'] ?></h6>
+                                <h6 class="text-muted mb-0"><?php echo $_SESSION['email'] ?></h6>
+                                <h6 class="text-muted mb-0"><?php echo $_SESSION['phone'] ?></h6>                
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- right profile -->
                 </div>
-            </div>
-        </section>
-        <!-- // Basic multiple Column Form section end -->
+                
+            </section>
+            <!-- // Basic multiple Column Form section end -->
+        
 
-
-    </div>
+        </div>
     <script src="../../assets/js/jquery-3.6.1.js" type="text/javascript"></script>
     <!-- content -->    
     <script src="../../assets/js/bootstrap.js"></script>

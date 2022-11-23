@@ -160,50 +160,43 @@ if(($_SESSION["username"]) === NULL){
                                     </table>
                                 </div>
                             </div>
-
+                            <?php
+                                $queries = ("SELECT * FROM offer INNER JOIN volunteer ON offer.idkey = volunteer.idkey INNER JOIN request ON offer.idreqkey = request.requestid WHERE volunteer.idkey = ". $_SESSION['idkey']);
+                                $resultes = mysqli_query($conn, $queries);
+        
+                                if ($resultes -> num_rows > 0) {
+                            ?>
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>View Requests</h4>
+                                    <h4>My Offer</h4>
                                     <p>You can sort this table by school / by city / or by request date by click table header.</p>
                                 </div>
                                 <div class="card-body">
-                                    <table id="table1" class="table overflow-auto" style="width: 100%;">
+                                    <table id="myoffer" class="table overflow-auto" style="width: 100%;">
                                         <thead>
                                             <tr>
-                                                <th>Request ID</th>
-                                                <th>School</th>
-                                                <th>City</th>
+                                                <th>Offer ID</th>
                                                 <th>Request Date</th>
-                                                <th>Status</th>
-                                                <th>Description</th>
-                                                <th>Action</th>
+                                                <th>Offer Date</th>
+                                                <th>Offer Status</th>                                  
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php 
-                                                include "../connector/connector.php";
-                                                $query = ("SELECT * FROM `school` INNER JOIN request ON schoolid= schoolidkey INNER JOIN tutorialrequest ON request.requestid = tutorialrequest.idreqkey;");
-                                                $result = mysqli_query($conn, $query);
-                                                if ($result -> num_rows > 0) {
-                                                    while($row = $result->fetch_assoc()) {
-                                                        if($row["requeststatus"] == "NEW"){
-                                                            echo '<tr>';
-                                                            echo '<td>'.$row["requestid"].'</td>';
-                                                            echo '<td>'.$row["schoolname"].'</td>';
-                                                            echo '<td>'.$row["city"].'</td>';
-                                                            echo '<td>'.$row["requestdate"].'</td>';
-                                                            echo '<td>'.$row["requeststatus"].'</td>';
-                                                            echo '<td>'.$row["description"].'</td>';
-                                                            echo '<td><button id="myInput" type="button" class="btn btn-outline-primary" onclick="window.location.href='."'requestdetails?viewid=". $row["requestid"] ."'".';">View Details</button></td>';
-                                                            echo '</tr>';
-                                                        }  
-                                                    }
+                                                while($row = $resultes->fetch_assoc()) {
+                                                    echo '<tr>';
+                                                    echo '<td>'.$row["offersid"].'</td>';
+                                                    echo '<td>'.$row["requestdate"].'</td>';
+                                                    echo '<td>'.$row["offerdate"].'</td>';
+                                                    echo '<td>'.$row["offerstatus"].'</td>';
+                                                    echo '</tr>';
                                                 }
                                             ?>           
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
+                            <?php } ?>
                         </div>
                     </div>
                     <!-- Container Center -->

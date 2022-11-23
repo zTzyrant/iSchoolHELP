@@ -34,3 +34,8 @@ $('#reviewioffers').DataTable({
    scrollX: true,
    order: [[ 0, 'desc' ], [ 1, 'asc' ]]
 });
+
+$('#myoffer').DataTable({
+  scrollY: 270,
+   scrollX: true,
+} );

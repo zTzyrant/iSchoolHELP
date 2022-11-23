@@ -52,7 +52,7 @@ if(($_SESSION["username"]) === NULL){
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
                             <!-- Need Logo -->
-                            <a href="index.html"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""></a> 
+                            <a href="../volunteer/"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""></a> 
                         </div>
                         <!-- Change theme color -->
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
@@ -160,6 +160,50 @@ if(($_SESSION["username"]) === NULL){
                                     </table>
                                 </div>
                             </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>View Requests</h4>
+                                    <p>You can sort this table by school / by city / or by request date by click table header.</p>
+                                </div>
+                                <div class="card-body">
+                                    <table id="table1" class="table overflow-auto" style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>Request ID</th>
+                                                <th>School</th>
+                                                <th>City</th>
+                                                <th>Request Date</th>
+                                                <th>Status</th>
+                                                <th>Description</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                                include "../connector/connector.php";
+                                                $query = ("SELECT * FROM `school` INNER JOIN request ON schoolid= schoolidkey INNER JOIN tutorialrequest ON request.requestid = tutorialrequest.idreqkey;");
+                                                $result = mysqli_query($conn, $query);
+                                                if ($result -> num_rows > 0) {
+                                                    while($row = $result->fetch_assoc()) {
+                                                        if($row["requeststatus"] == "NEW"){
+                                                            echo '<tr>';
+                                                            echo '<td>'.$row["requestid"].'</td>';
+                                                            echo '<td>'.$row["schoolname"].'</td>';
+                                                            echo '<td>'.$row["city"].'</td>';
+                                                            echo '<td>'.$row["requestdate"].'</td>';
+                                                            echo '<td>'.$row["requeststatus"].'</td>';
+                                                            echo '<td>'.$row["description"].'</td>';
+                                                            echo '<td><button id="myInput" type="button" class="btn btn-outline-primary" onclick="window.location.href='."'requestdetails?viewid=". $row["requestid"] ."'".';">View Details</button></td>';
+                                                            echo '</tr>';
+                                                        }  
+                                                    }
+                                                }
+                                            ?>           
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- Container Center -->
@@ -189,7 +233,7 @@ if(($_SESSION["username"]) === NULL){
                             <h6 class="text-muted mb-0"><?php echo $_SESSION['phone'] ?></h6>
                         </div>
                         <div class="card-footer">
-                            <button type="button" class="btn btn-outline-success">
+                            <button type="button" onclick="location='editprofile'" class="btn btn-outline-success">
                                 <i class="bi bi-person-fill cstm"></i>
                                 <span>Edit Profile</span>
                             </button>

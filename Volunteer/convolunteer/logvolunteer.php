@@ -21,6 +21,7 @@
         
             }
             $_SESSION['username'] = $username;
+            $_SESSION['password'] = $_POST['password'];
             $_SESSION['status'] = 'login';
 
             

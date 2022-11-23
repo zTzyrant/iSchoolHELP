@@ -150,10 +150,10 @@ if(($_SESSION["username"]) === NULL){
             <div class="row match-height">
                 <div class="col-12 col-lg-9">
                     <div class="card">
-
                         <div class="card-content">
                             <div class="card-body">
-                                
+                                <h4>View Requests</h4>
+                                <p>You can sort this table by school / by city / or by request date by click table header.</p>
                                 <table id="reviewioffers" class="table overflow-auto" style="width: 100%;">
                                     <thead>
                                         <tr>
@@ -164,7 +164,7 @@ if(($_SESSION["username"]) === NULL){
                                             <th>Address</th>
                                             <th>City</th>
                                             <th>Action</th>
-
+                                            <th>Update Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -182,7 +182,13 @@ if(($_SESSION["username"]) === NULL){
                                                     echo '<td>'.$row["schoolname"].'</td>';
                                                     echo '<td>'.$row["address"].'</td>';
                                                     echo '<td>'.$row["city"].'</td>';
-                                                    echo '<td><button id="myInput" type="button" class="btn btn-outline-primary" onclick="window.location.href='."'reviewoffers?viewidrequest=". $row["requestid"] ."'".';">View Details</button></td>';
+                                                    echo '<td><button type="button" class="btn btn-outline-primary" onclick="window.location.href='."'reviewoffers?viewidrequest=". $row["requestid"] ."'".';">View Details</button></td>';
+                                                    if($row["requeststatus"] != 'CLOSED'){
+                                                        echo '<td><button type="button" class="btn btn-outline-danger" onclick="closerequest('. $row["requestid"] .")".';">Close Request</button></td>';
+                                                    } else {
+                                                        echo '<td>Closed</td>';
+
+                                                    }
                                                     echo '</tr>';
                                                 }
                                             }
@@ -194,6 +200,72 @@ if(($_SESSION["username"]) === NULL){
                             </div>
                         </div>
                     </div>
+                    <?php if(isset($_GET['viewidrequest'])){ ?>
+                    <div class="card">
+                        <div class="card-header">
+                            <?php 
+                                $query2 = ("SELECT * from request where requestid='". $_GET['viewidrequest'] . "'"); // get detail admin user
+                                $result2 = $conn->query($query2);
+                                while($row = $result2->fetch_assoc()) {
+                                    $requestdesc = $row['description'];
+                                }
+                            ?>
+                            <h4>Offers Requests for Request ID: <?php echo $_GET['viewidrequest'] ?></h4>
+                            <p>Request Description: <?php echo $requestdesc ?></p>
+                            <small>You can sort this table by offer date, by remarks, name, age, or occupation by click table header.</small>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <table id="viewoffersbyreqid" class="table overflow-auto" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Offer ID</th>
+                                            <th>Offer Date</th>
+                                            <th>Remarks</th>
+                                            <th>Name</th>
+                                            <th>Age</th>
+                                            <th>Occupation</th>
+                                            <th>Offer Status</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                            $needreq = $_GET['viewidrequest'];
+                                            include "../../connector/connector.php";
+                                            $query = ("SELECT * FROM request  INNER JOIN offer ON
+                                             request.requestid = offer.idreqkey INNER JOIN volunteer ON 
+                                             offer.idkey = volunteer.idkey INNER JOIN user ON 
+                                             volunteer.idkey = user.id WHERE request.requestid = $needreq;");
+
+                                            $result = mysqli_query($conn, $query);
+
+                                            if ($result -> num_rows > 0) {
+                                                while($row = $result->fetch_assoc()) {
+                                                    echo '<tr>';
+                                                    echo '<td>'.$row["offersid"].'</td>';
+                                                    echo '<td>'.$row["offerdate"].'</td>';
+                                                    echo '<td>'.$row["remarks"].'</td>';
+                                                    echo '<td>'.$row["fullname"].'</td>';
+                                                    $datenow = date("Y-m-d");
+                                                    $agenow = date_diff(date_create($row["dateofbirth"]), date_create($datenow));
+                                                    echo '<td>'.$agenow->format('%y').'</td>';
+                                                    echo '<td>'.$row["occupation"].'</td>';
+                                                    echo '<td>'.$row["offerstatus"].'</td>';
+                                                    echo '<td><button type="button" class="btn btn-outline-primary" onclick="acceptoffers('. $row["offersid"] .",'". $row["email"] ."')".';">Accept</button></td>';
+                                                    echo '</tr>';
+                                                }
+                                            }
+                                        ?>
+                                        
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
                 </div>
                     <!-- right profile -->
                     <div class="col-12 col-lg-3">
@@ -246,6 +318,9 @@ if(($_SESSION["username"]) === NULL){
 
     <script src="../../assets/js/datatables.min.js"></script>
     <script src="../../assets/js/datatables.js"></script>
+
+    <script src="../../assets/js/reviewoffers.js"></script>
+
 
 
 

@@ -206,9 +206,9 @@ if(($_SESSION["username"]) === NULL){
                                             <div class="input-group mb-3">
                                                 <label class="input-group-text" for="inputGroupSelect01">School</label>
                                                 <select class="form-select" id="inputGroupSelect01" required>
-                                                    <option value="-1" selected hidden>Select Register for</option>
+                                                    <option value="-1" selected hidden>Select Administrator School to Register</option>
                                                     <?php 
-                                                        include "../connector/connector.php";
+                                                        include "../../connector/connector.php";
                                                         $query = ("SELECT * FROM `school`");
                                                         $result = mysqli_query($conn, $query);
 
@@ -242,7 +242,7 @@ if(($_SESSION["username"]) === NULL){
                                         
                                         <div class="form-group">
                                             <label for="col-staffid" class="form-label">Staff ID</label>
-                                            <input id="col-staffid" type="text" class="form-control" placeholder="Staff ID" name="col-staffid" required>
+                                            <input id="col-staffid" type="number" class="form-control" placeholder="Staff ID" name="col-staffid" required>
                                         </div>
                                         
                                         <div class="col-md-6 col-12">

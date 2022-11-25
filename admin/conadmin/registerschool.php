@@ -18,9 +18,10 @@
     VALUES ('', '$schoolname', '$address', '$city')";
 
     if ($conn->query($sql) === TRUE) {
-        echo 1;
+        $idlast = $conn->insert_id;
+        echo $idlast;
     } else {
-        echo 0;
+        echo -1;
     }
   
     $conn->close();

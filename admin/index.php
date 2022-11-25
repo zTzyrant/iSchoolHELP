@@ -67,7 +67,7 @@ if(($_SESSION["username"]) === NULL){
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
                             <!-- Need Logo -->
-                            <a href="index.html"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""></a> 
+                            <a href="../admin"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""></a> 
                         </div>
                         <!-- Change theme color -->
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
@@ -190,7 +190,7 @@ if(($_SESSION["username"]) === NULL){
                                             </table>
                                         </div>
                                         <div class="card-body">
-                                            <button type="button" class="btn btn-outline-primary float-end">Register School</button>
+                                            <button type="button" onclick="window.location.href = 'dashboard/registerschool';" class="btn btn-outline-primary float-end">Register School</button>
                                         </div>
                                     </div>
                                 </div>
@@ -237,7 +237,7 @@ if(($_SESSION["username"]) === NULL){
                                             </table>
                                         </div>
                                         <div class="card-body">
-                                            <button type="button" class="btn btn-outline-primary float-end">Add Request</button>
+                                            <button type="button" onclick="window.location.href = 'dashboard/submitreq';" class="btn btn-outline-primary float-end">Add Request</button>
                                         </div>
                                     </div>
                                 </div>
@@ -286,7 +286,7 @@ if(($_SESSION["username"]) === NULL){
                                     </table>
                                 </div>
                                 <div class="card-body">
-                                    <button type="button" class="btn btn-outline-primary float-end">Add</button>
+                                    <button type="button" onclick="window.location.href = 'dashboard/registerschool';" class="btn btn-outline-primary float-end">Add</button>
                                 </div>
                             </div>
                         </div>

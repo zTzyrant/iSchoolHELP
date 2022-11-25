@@ -74,7 +74,7 @@ if(($_SESSION["username"]) === NULL){
                     <ul class="menu mb-auto">
                         <li class="sidebar-title">Menu</li>
                         <li class="sidebar-item active ">
-                            <a href="admin" class='sidebar-link disabled'>
+                            <a href="../volunteer" class='sidebar-link disabled'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
@@ -138,7 +138,7 @@ if(($_SESSION["username"]) === NULL){
                                         <tbody>
                                             <?php 
                                                 include "../connector/connector.php";
-                                                $query = ("SELECT * FROM `school` INNER JOIN request ON schoolid= schoolidkey INNER JOIN tutorialrequest ON request.requestid = tutorialrequest.idreqkey;");
+                                                $query = ("SELECT * FROM `school` INNER JOIN request ON schoolid = schoolidkey");
                                                 $result = mysqli_query($conn, $query);
                                                 if ($result -> num_rows > 0) {
                                                     while($row = $result->fetch_assoc()) {

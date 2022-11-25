@@ -39,3 +39,7 @@ $('#myoffer').DataTable({
   scrollY: 270,
    scrollX: true,
 } );
+
+$('#tableresourcerequest').DataTable( {
+  scrollX: true,
+})

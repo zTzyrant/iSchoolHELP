@@ -18,7 +18,11 @@ if(($_SESSION["username"]) === NULL){
 }
 
 
-    $query = "SELECT * FROM `school` INNER JOIN request ON schoolid= schoolidkey INNER JOIN tutorialrequest ON request.requestid = tutorialrequest.idreqkey LEFT JOIN resourcerequest ON tutorialrequest.idreqkey = resourcerequest.idreqkey WHERE request.requestid = "."$requestID";
+    $query = "SELECT * FROM `school` INNER JOIN request ON schoolid =
+              schoolidkey LEFT JOIN tutorialrequest ON request.requestid = 
+              tutorialrequest.idreqkey LEFT JOIN resourcerequest ON request.requestid = 
+              resourcerequest.idreqkey WHERE request.requestid = "."$requestID";
+
     $result = mysqli_query($conn, $query);
     if ($result -> num_rows > 0) {
         while($row = $result->fetch_assoc()) {
@@ -77,7 +81,7 @@ if(($_SESSION["username"]) === NULL){
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
                             <!-- Need Logo -->
-                            <a href="index.html"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""></a> 
+                            <a href="../volunteer"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""></a> 
                         </div>
                         <!-- toggle sidebar -->
                         <div class="sidebar-toggler x pointeri"> 
@@ -88,13 +92,18 @@ if(($_SESSION["username"]) === NULL){
                 <div class="sidebar-menu">
                     <ul class="menu mb-auto">
                         <li class="sidebar-title">Menu</li>
-                        <li class="sidebar-item active ">
-                            <a href="admin" class='sidebar-link disabled'>
+                        <li class="sidebar-item ">
+                            <a href="../volunteer" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
-
+                        <li class="sidebar-item active ">
+                            <a href="admin" class='sidebar-link disabled'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Details Request</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item ">
                             <a onclick="signoutvolun()" href="#" class='sidebar-link'>
                                 <i class="bi bi-box-arrow-right"></i>
@@ -184,6 +193,7 @@ if(($_SESSION["username"]) === NULL){
 
                                     </form>
 
+                                    <?php if($proposeddate != null) {?>
                                     <form class="form" onsubmit="return false" method="POST">
                                         <h4 class="card-title">Tutorial Request</h4>
                                         
@@ -217,8 +227,8 @@ if(($_SESSION["username"]) === NULL){
                                             </div>
                                         </div>
                                     </form>
-
-                                    <?php if($resourcetype != null) {?>
+                                    
+                                    <?php } if($resourcetype != null) {?>
 
                                     <form class="form" onsubmit="return false" method="POST">
                                         <h4 class="card-title">Resource Request</h4>

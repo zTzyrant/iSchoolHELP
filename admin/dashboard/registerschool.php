@@ -70,7 +70,7 @@ if(($_SESSION["username"]) === NULL){
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
                             <!-- Need Logo -->
-                            <a href="index.html"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""></a> 
+                            <a href="../"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""></a> 
                         </div>
                         <!-- Change theme color -->
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
@@ -193,7 +193,7 @@ if(($_SESSION["username"]) === NULL){
                                     <div class="row">
                                         <div class="col-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1" id="form1_submit">Submit</button>
-                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1" id="form1_submit">Reset</button>
+                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                         </div>
                                     </div>
                                 </form>
@@ -373,9 +373,6 @@ if(($_SESSION["username"]) === NULL){
                                             ?>
                                         </tbody>
                                     </table>
-                                </div>
-                                <div class="card-body">
-                                    <button type="button" class="btn btn-outline-primary float-end">Add</button>
                                 </div>
                             </div>
                         </div>

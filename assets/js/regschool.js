@@ -1,17 +1,13 @@
 $('#selectformtype').change(function(){
     let check = $('#selectformtype').find(":selected").val();
     if(check === '1'){
-        $('#form1').hide();
-        if($('#form1').css('display') === 'none'){
-            $('#form1').show();
-            $('#form2').hide();
-        }
+        $('#form1').show();
+        $('#form2').hide();
     } else if (check === '2'){
-        if($('#form2').css('display') === 'none'){
-            $('#form1').hide();
-            $('#form2').show();
-        }
+        $('#form1').hide();
+        $('#form2').show();
     }
+    
 })
 
 
@@ -120,11 +116,11 @@ function registschool(){
             let msg = "";
             // UPDATE TABLE AFTER REGIST
             $('#form1').trigger("reset");
-            if(response == 1){
+            if(response != -1){
                 let t = $('#schooltbl').DataTable();
                 t.row.add([schoolname, address, city]).draw(false);
                 $('#inputGroupSelect01').append($('<option>', {
-                    value: schoolname,
+                    value: response,
                     text: schoolname
                 }));
 

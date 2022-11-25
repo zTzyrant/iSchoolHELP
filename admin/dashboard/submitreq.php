@@ -69,7 +69,7 @@ if(($_SESSION["username"]) === NULL){
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
                             <!-- Need Logo -->
-                            <a href="index.html"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""></a> 
+                            <a href="../"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""></a> 
                         </div>
                         <!-- Change theme color -->
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
@@ -150,12 +150,19 @@ if(($_SESSION["username"]) === NULL){
             <div class="row match-height">
                 <div class="col-12 col-lg-9">
                     <div class="card">
-
+                        <div class="card-header">
+                            <h4 class="card-title">Select Request For</h4>
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="selectformtype">Request for</label>
+                                <select class="form-select" id="selectformtype">
+                                    <option value="1">Tutorial</option>
+                                    <option value="2">Resource</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="card-content">
                             <div class="card-body">
-                                
-
-                                <!-- Form School & School Administrator  -->
+                                <!-- Form submit tutorial request  -->
                                 <form class="form" id="form1" onsubmit="return false" method="POST">
                                     <h4 class="card-title">Submit Request</h4>
                                     
@@ -196,37 +203,52 @@ if(($_SESSION["username"]) === NULL){
                                         
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group form-check form-switch">
-                                                    <input id="additionalreq" class="form-check-input" type="checkbox" id="addresource">
-                                                    <label class="form-check-label" for="addresource">Additional Resource Request</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="row">
-                                        <div class="col-md-6 col-12" id="addrq1" style="display: none;">
-                                            <div class="form-group">
-                                                <label for="resourcetype" class="form-label">Resource Type</label>
-                                                <input type="text" id="resourcetype" class="form-control" placeholder="Resource Type" name="resourcetype" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12" id="addrq2" style="display: none;">
-                                            <div class="form-group">
-                                                <label for="numrequired" class="form-label">Number Required</label>
-                                                <input type="text" id="numrequired" class="form-control" placeholder="Number Required" name="numrequired" required>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
                                         <div class="col-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1" id="form1_submit">Submit</button>
-                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1" id="form1_submit">Reset</button>
+                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                         </div>
                                     </div>
                                     
                                 </form>
+                                <!-- End Submit Tutorial request -->
+                                <!-- Form resource request start -->
+                                <form class="form" id="form2" onsubmit="return false" method="POST" style="display: none;">
+                                    <h4 class="card-title">Submit Request</h4>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="descx" class="form-label">Description</label>
+                                                <input type="text" id="descx" class="form-control" placeholder="Description" name="descx" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="resourcetype" class="form-label">Resource Type</label>
+                                                <select class="form-select" id="resourcetype" name="resourcetype" required>
+                                                    <option value="0" hidden>Select Resource Type</option>
+                                                    <option value="1">Mobile Device</option>
+                                                    <option value="2">Personal Computer</option>
+                                                    <option value="3">Networking Equipment</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="numrequired" class="form-label">Number Required</label>
+                                                <input type="number" id="numrequired" class="form-control" placeholder="Number Required" name="numrequired" required>
+                                            </div>
+                                        </div>                              
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1" id="form2_submit">Submit</button>
+                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                        </div>
+                                    </div>
+                                    
+                                </form>
+                                <!-- Form resource request end -->
 
                             </div>
                         </div>
@@ -276,12 +298,12 @@ if(($_SESSION["username"]) === NULL){
             <section class="row">
                 <div class="col-12 col-lg-9">
                     
-                    <!-- Container Center -->
+                    <!-- Tutorial Start -->
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Request List</h4>
+                                    <h4>Request Tutorial</h4>
                                 </div>
                                 <div class="card-body">
                                     <table id="tabletutorialrequest" class="table overflow-auto" style="width: 100%;">
@@ -303,7 +325,7 @@ if(($_SESSION["username"]) === NULL){
                                         <tbody>
                                             <?php 
                                                 include "../../connector/connector.php";
-                                                $query = ("SELECT * FROM request INNER JOIN tutorialrequest ON request.requestid = tutorialrequest.idreqkey;");
+                                                $query = ("SELECT * FROM request INNER JOIN tutorialrequest on requestid = idreqkey;");
                                                 $result = mysqli_query($conn, $query);
 
                                                 if ($result -> num_rows > 0) {
@@ -331,8 +353,57 @@ if(($_SESSION["username"]) === NULL){
                             </div>
                         </div>
                     </div>
-                    <!-- Container Center -->
+                    <!-- Tutorial End -->
+                    <!-- Resource Start -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Request Resource</h4>
+                                </div>
+                                <div class="card-body">
+                                    <table id="tableresourcerequest" class="table overflow-auto" style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>Request Id</th>
+                                                <th>Request Date</th>
+                                                <th>Request Status</th>
+                                                <th>Description</th>
+                                                <th>Resource Type</th>
+                                                <th>Number Required</th>
 
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                                include "../../connector/connector.php";
+                                                $query = ("SELECT * FROM request INNER JOIN resourcerequest ON request.requestid = resourcerequest.idreqkey;");
+                                                $result = mysqli_query($conn, $query);
+
+                                                if ($result -> num_rows > 0) {
+                                                    while($row = $result->fetch_assoc()) {
+                                                        echo '<tr>';
+                                                        echo '<td>'.$row["requestid"].'</td>';
+                                                        echo '<td>'.$row["requestdate"].'</td>';
+                                                        echo '<td>'.$row["requeststatus"].'</td>';
+                                                        echo '<td>'.$row["description"].'</td>';
+                                                        echo '<td>'.$row["resourcetype"].'</td>';
+                                                        echo '<td>'.$row["numrequired"].'</td>';
+                                                        echo '</tr>';
+                                                    }
+                                                }
+                                            ?>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-body">
+                                    <button type="button" class="btn btn-outline-success float-end" onClick="window.location.reload();">Refresh Table</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Resource End -->
                 </div>
             </section>
         </div>

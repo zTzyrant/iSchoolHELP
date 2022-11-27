@@ -17,17 +17,19 @@
     $position = $_POST['position'];
 
 
-    $query = ("UPDATE user SET user.password = '$password', fullname = '$fullname', email = '$email', phone = '$phone' WHERE id = '$userid';"); // update user
+    $query = ("UPDATE user SET user.password = '$password', fullname = '$fullname',
+             email = '$email', phone = '$phone' WHERE id = '$userid';"); // update user
     $result = mysqli_query($conn, $query);
     
     if ($result === TRUE) {
 
-        $_SESSION['password'] = $password;
+        $_SESSION['password'] = $_POST['password'];
         $_SESSION['fullname'] = $fullname;
         $_SESSION['email'] = $email;
         $_SESSION['phone'] = $phone;
 
-        $query2 = ("UPDATE schooladmin SET staffid = '$staffid', position = '$position' WHERE idkey = '$userid';"); // update user
+        $query2 = ("UPDATE schooladmin SET staffid = '$staffid', 
+                  position = '$position' WHERE idkey = '$userid';"); // update user
         $result2 = mysqli_query($conn, $query2);
         if ($result === TRUE) {
             $_SESSION['staffid'] = $staffid;

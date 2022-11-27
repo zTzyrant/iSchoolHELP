@@ -154,7 +154,9 @@ if(($_SESSION["username"]) === NULL){
 
                                                 if ($result -> num_rows > 0) {
                                                     while($row = $result->fetch_assoc()) {
-                                                        echo '<option value="'.$row["staffid"].'">'.$row["staffid"].'</option>';
+                                                        if($_SESSION['staffid'] != $row["staffid"]){
+                                                            echo '<option value="'.$row["staffid"].'">'.$row["staffid"].'</option>';
+                                                        }
                                                     }
                                                 }
                                             ?>
@@ -203,7 +205,7 @@ if(($_SESSION["username"]) === NULL){
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="phone" class="form-label">Phone</label>
-                                                    <input type="number" id="phone" class="form-control" placeholder="Phone Number" name="phone" value="<?php echo $_SESSION['phone']?>" required>
+                                                    <input type="text" id="phone" class="form-control" placeholder="Phone Number" name="phone" value="<?php echo $_SESSION['phone']?>" required>
                                                 </div>
                                             </div>
 

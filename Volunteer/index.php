@@ -150,7 +150,10 @@ if(($_SESSION["username"]) === NULL){
                                                             echo '<td>'.$row["requestdate"].'</td>';
                                                             echo '<td>'.$row["requeststatus"].'</td>';
                                                             echo '<td>'.$row["description"].'</td>';
-                                                            echo '<td><button id="myInput" type="button" class="btn btn-outline-primary" onclick="window.location.href='."'requestdetails?viewid=". $row["requestid"] ."'".';">View Details</button></td>';
+                                                            echo '<td><button id="myInput" type="button" 
+                                                                class="btn btn-outline-primary" onclick="window.location.href='.
+                                                                "'requestdetails?viewid=". $row["requestid"] ."'".'
+                                                                ;">View Details</button></td>';
                                                             echo '</tr>';
                                                         }  
                                                     }
@@ -161,7 +164,8 @@ if(($_SESSION["username"]) === NULL){
                                 </div>
                             </div>
                             <?php
-                                $queries = ("SELECT * FROM offer INNER JOIN volunteer ON offer.idkey = volunteer.idkey INNER JOIN request ON offer.idreqkey = request.requestid WHERE volunteer.idkey = ". $_SESSION['idkey']);
+                                $queries = ("SELECT * FROM offer INNER JOIN volunteer ON offer.idkey = volunteer.idkey 
+                                            INNER JOIN request ON offer.idreqkey = request.requestid WHERE volunteer.idkey = ". $_SESSION['idkey']);
                                 $resultes = mysqli_query($conn, $queries);
         
                                 if ($resultes -> num_rows > 0) {
